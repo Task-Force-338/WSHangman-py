@@ -2,6 +2,7 @@ import asyncio
 import random
 import websockets
 import json
+import sys
 
 wordlist = [{"word": "apple", "hint": "A red fruit which is good for health", "second_hint": "A company which makes phones"},
             {"word": "banana", "hint": "A yellow fruit which monkeys like", "second_hint": "Inferno's Mid to B"},
@@ -214,7 +215,14 @@ async def hangman(websocket, path):
                 break
 
 if __name__ == "__main__":
-    start_server = websockets.serve(hangman, "localhost", 8765)
+    if len(sys.argv) != 3:
+        print("Usage: python hangmanserver.py <ip address> <port>")
+        exit(1)
+
+    address = sys.argv[1]
+    port = sys.argv[2]
+
+    start_server = websockets.serve(hangman, address, port)
     print("Server started")
     asyncio.get_event_loop().run_until_complete(start_server)
     asyncio.get_event_loop().run_forever()

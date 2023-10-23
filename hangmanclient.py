@@ -1,9 +1,17 @@
 import websockets
 import asyncio
 import json
+import sys
 
 async def play():
-    async for websocket in websockets.connect("ws://localhost:8765"): #connect to the server. localhost for testing. for presentation, we'll put the server in the remote server
+    if len(sys.argv) != 3:
+        print("Usage: python hangmanclient.py <address> <port>")
+        return
+
+    address = sys.argv[1]
+    port = sys.argv[2]
+
+    async for websocket in websockets.connect("ws://{}:{}".format(address, port)):
         print("Hangman")
         print("Lives: 6")
 
