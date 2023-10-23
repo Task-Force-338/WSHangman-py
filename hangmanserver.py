@@ -198,7 +198,7 @@ async def hangman(websocket, path):
                 await websocket.send(json.dumps({"type": "gameover", "message": "You won!"}))
                 break
         data = json.loads(event)
-        game.guess(data["letter"])
+        game.guess(data["letter"].lower())
 
         if game.lives == 3 and not game.is_second_hint:
             game.is_second_hint = True
