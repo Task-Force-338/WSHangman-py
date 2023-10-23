@@ -132,6 +132,11 @@ wordlist = [{"word": "apple", "hint": "A red fruit which is good for health", "s
             {"word": "oarai", "hint": "A town in Ibaraki, Japan", "second_hint": "The setting of Girls Und Panzer"},
             {"word": "r", "hint": "A programming language", "second_hint": "The one which is used for data science"},
             {"word": "julia", "hint": "A programming language", "second_hint": "The one which is used for data science"},
+            {"word": "marrakesh", "hint": "A city in Morocco", "second_hint": "The setting of Hitman 2016's third episode"},
+            {"word": "vermont", "hint": "A state in the US", "second_hint": "Whittleton Creek is set here"},
+            {"word": "melbourne", "hint": "A city in Australia", "second_hint": "Hosts a race in the F1 calendar"},
+            {"word": "jakarta", "hint": "A capital city in Indonesia", "second_hint": "Also the name for Eclipse's Java EE Implementation"},
+            {"word": "urzikstan", "hint": "A fictional country in Call of Duty: Modern Warfare", "second_hint": "The one which is invaded by Russia"},
 ]
 
 #or.. you know... make a class like a normal person. this is the backend after all
@@ -154,11 +159,14 @@ class HangmanGame:
         self.guessed = []
         self.lives = 6
         self.gameover = False
+        self.second_hint = ""
+        self.is_second_hint = False
     
     def start(self):
         random_word = random.choice(wordlist)
         self.word = random_word["word"]
         self.hint = random_word["hint"]
+        self.second_hint = random_word["second_hint"]
 
     def guess(self, letter):
         if letter in self.guessed:
@@ -190,7 +198,12 @@ async def hangman(websocket, path):
                 break
         data = json.loads(event)
         game.guess(data["letter"])
-        await websocket.send(json.dumps({"type": "guess", "guessed": game.guessed, "lives": game.lives, "word": game.word, "gameover": game.gameover}))
+
+        if game.lives == 3 and not game.is_second_hint:
+            game.is_second_hint = True
+            await websocket.send(json.dumps({"type": "guess", "guessed": game.guessed, "lives": game.lives, "word": game.word, "gameover": game.gameover, "second_hint": game.second_hint}))
+        else:
+            await websocket.send(json.dumps({"type": "guess", "guessed": game.guessed, "lives": game.lives, "word": game.word, "gameover": game.gameover}))
 
         if game.gameover:
             if game.lives == 0:

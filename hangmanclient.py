@@ -27,6 +27,9 @@ async def play():
                 print("Word: {}".format("".join(letter if letter in data["guessed"] else "_" for letter in data["word"])))
                 print("Guessed: {}".format(data["guessed"]))
                 print("Lives: {}".format(data["lives"]))
+            #check if second hint is in the data
+            if "second_hint" in data:
+                print("Second hint: {}".format(data["second_hint"]))
             if data["gameover"]:
                 event = await websocket.recv()
                 data = json.loads(event)
