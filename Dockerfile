@@ -20,7 +20,7 @@ RUN pip install websockets
 EXPOSE 8765
 
 # Run the server when the container launches.
-CMD ["python", "hangmanserver.py"]
+CMD ["python", "hangmanserver.py", "0.0.0.0", "8765"]
 
 # maybe return some funny strings when the server is launched?
 # CMD ["echo", "Hello! I am on Team Chitoge!"]
