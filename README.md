@@ -12,12 +12,12 @@ $ python3 hangmanserver.py
 # Docker
 $ docker build -t wshangman-py .
 # please do not name the image Sayori, please.
-$ docker run -p 8080:8080 wshangman-py
+$ docker run -p 8765:8765 wshangman-py
 
 # Podman
 # You know that Podman is a drop-in replacement for Docker, right?
 $ podman build -t wshangman-py .
-$ podman run -p 8080:8080 wshangman-py
+$ podman run -p 8765:8765 wshangman-py
 ```
 
 Run the Client. The game will loop forever until you ragequit.
