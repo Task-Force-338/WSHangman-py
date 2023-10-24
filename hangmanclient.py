@@ -48,6 +48,7 @@ async def play():
                         print("You lose!")
                         print("The word was {}".format(data["word"]))
                     break
+        break
 
 if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(play())
