@@ -138,6 +138,10 @@ wordlist = [{"word": "apple", "hint": "A red fruit which is good for health", "s
             {"word": "melbourne", "hint": "A city in Australia", "second_hint": "Hosts a race in the F1 calendar"},
             {"word": "jakarta", "hint": "A capital city in Indonesia", "second_hint": "Also the name for Eclipse's Java EE Implementation"},
             {"word": "urzikstan", "hint": "A fictional country in Call of Duty: Modern Warfare", "second_hint": "The one which is invaded by Russia"},
+            {"word": "mirage", "hint": "A map in Counter-Strike: Global Offensive", "second_hint": "The one with the sandstorm"},
+            {"word": "dust2", "hint": "A map in Counter-Strike: Global Offensive", "second_hint": "please stop playing this map"},
+            {"word": "greenland", "hint": "A country", "second_hint": "The one which is not green"},
+            {"word": "iceland", "hint": "A country", "second_hint": "The one which is not on ice"},
 ]
 
 #or.. you know... make a class like a normal person. this is the backend after all
