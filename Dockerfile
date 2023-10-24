@@ -6,6 +6,7 @@
 
 # Or just use Python as base. That exists.
 FROM python:latest 
+# you can specify the version of Python you want to use, but for the sake of simplicity, I'll just use the latest version.
 
 # Set the working directory to /app. Gotta keep things clean.
 WORKDIR /app
@@ -20,6 +21,9 @@ RUN pip install websockets
 EXPOSE 8765
 
 # Run the server when the container launches.
+# CMD differs from RUN in that it is run when the container is launched, not when the image is built.
+# CMD is also overwritten by the command line arguments when the container is launched.
+# So if you want to run the server with different arguments, you can do so by changing the CMD arguments below.
 CMD ["python", "hangmanserver.py", "0.0.0.0", "8765"]
 
 # maybe return some funny strings when the server is launched?
