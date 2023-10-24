@@ -196,10 +196,10 @@ async def hangman(websocket, path):
     async for event in websocket:
         if game.gameover:
             if game.lives == 0:
-                await websocket.send(json.dumps({"type": "gameover", "message": "You lost!"}))
+                await websocket.send(json.dumps({"type": "gameover", "win": False, "word": game.word}))
                 break
             else:
-                await websocket.send(json.dumps({"type": "gameover", "message": "You won!"}))
+                await websocket.send(json.dumps({"type": "gameover", "win": True}))
                 break
         data = json.loads(event)
         game.guess(data["letter"].lower())
