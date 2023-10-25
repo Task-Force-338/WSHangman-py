@@ -5,8 +5,11 @@
 #     && pip3 install --upgrade pip
 
 # Or just use Python as base. That exists.
-FROM python:latest 
+# FROM python:latest 
 # you can specify the version of Python you want to use, but for the sake of simplicity, I'll just use the latest version.
+
+# Or better, use lightweight Python as base. That also exists.
+FROM python:3.11-slim
 
 # Set the working directory to /app. Gotta keep things clean.
 WORKDIR /app
