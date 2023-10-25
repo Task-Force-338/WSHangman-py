@@ -58,8 +58,7 @@ $ podman run -p 8765:8765 wshangman-py
 ```
 ### Client
 
-Run the Client. The game will loop forever until you ragequit.
-Don't worry. I'll make it so that you can quit the game without ragequitting. Check issue #1.
+Run the Client. Just call Python and call it a day.
 
 ```bash
 $ python3 client.py
